@@ -165,25 +165,12 @@ contains
         end do
     end subroutine print_mat_cmplx
 
-    subroutine lineval_r(X, low, hi)
-        real(real64) :: X(..)
+    subroutine lineval_r(X, m, n, low, hi)
+        integer :: m, n
+        real(real64) :: X(m,n)
         real(real64), intent(in) :: low, hi
-        select rank(X)
-        rank(0)
-            X = X
-        rank(1)
-            X = ((hi - low)/(maxval(X) - minval(X)))*(X - minval(X)) + low
-        rank(2)
-            X = ((hi - low)/(maxval(X) - minval(X)))*(X - minval(X)) + low
-        rank(3)
-            X = ((hi - low)/(maxval(X) - minval(X)))*(X - minval(X)) + low
-        rank(4)
-            X = ((hi - low)/(maxval(X) - minval(X)))*(X - minval(X)) + low
-        rank(5)
-            X = ((hi - low)/(maxval(X) - minval(X)))*(X - minval(X)) + low
-        rank default
-            error stop "arrays over rank 5 are not supported"
-        end select
+        X = ((hi - low)/(maxval(X) - minval(X)))*(X - minval(X)) + low
+
     end subroutine lineval_r
 
 
