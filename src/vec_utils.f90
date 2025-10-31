@@ -175,7 +175,8 @@ contains
 
     subroutine lin_reg(dat, Coeff)
         real(real64) :: dat(:, :)
-        real(real64), allocatable :: Coeff(:),A(:),M(:,:), dmp(:)
+        real(real64) :: Coeff(:)
+        real(real64), allocatable :: A(:),M(:,:), dmp(:)
         integer ::p, q, i, j, info
         p = size(dat, 1)
         q = size(dat, 2)
